@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso - El Callejón de la Moda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #09090b 0%, #18181b 50%, #7f1d1d 100%);
+            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #ffffff;
+        }
+        .card-login {
+            background: rgba(24, 24, 27, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #3b82f6;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        .login-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #3b82f6;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .btn-blue {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        .btn-blue:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card card-login p-4">
+                    <div class="card-body text-center">
+                        <!-- Logo en la pantalla de inicio de sesión -->
+                        <img src="{{ url_for('static', filename='uploads/logo de la tienda.jpg') }}" alt="Logo Tienda" class="login-logo mb-3">
+                        
+                        <h3 class="fw-bold text-white mb-1">EL CALLEJÓN</h3>
+                        <p class="text-info small mb-4 fw-semibold tracking-widest text-uppercase">de la moda</p>
+                        
+                        {% if error %}
+                            <div class="alert alert-danger text-center p-2 mb-3 small bg-danger text-white border-0">{{ error }}</div>
+                        {% endif %}
+
+                        <form action="/login" method="POST" class="text-start">
+                            <div class="mb-3">
+                                <label class="form-label text-light small">Usuario</label>
+                                <input type="text" class="form-control bg-dark text-white border-secondary" name="usuario" required placeholder="admin">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-light small">Contraseña</label>
+                                <input type="password" class="form-control bg-dark text-white border-secondary" name="password" required placeholder="••••">
+                            </div>
+                            <button type="submit" class="btn btn-blue w-100 mt-2 py-2">Ingresar al Sistema</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
